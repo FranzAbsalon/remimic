@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.buttonToHover{
+  transition: 0.2s ease-in-out;
+}
+
+.buttonToHover:hover{
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+

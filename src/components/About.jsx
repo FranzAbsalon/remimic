@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
-const About = () => {
+const About = ({activeSection}) => {
 
     return (  
-    <>
-        <section id="about" class="w-screen h-fit bg-secondaryColor overflow-y-hidden">
+    <div id="about" className={activeSection === "about" ? "text-primaryColor" : "text-secondaryColor"}>
+        <section class="w-screen h-fit bg-secondaryColor overflow-y-hidden">
             <div class="py-24 mx-auto max-w-screen-xl grid justify-items-center">
                 <h1 class="text-3xl font-semibold text-white md:text-4xl lg:text-5xl mb-4">How It Works</h1>
                 <span class="bg-gradient-to-r h-0.5 w-56 from-transparent via-primaryColor to-transparent"></span>
@@ -56,7 +56,7 @@ const About = () => {
 
             </div>
         </section>
-    </> 
+    </div> 
     );
 }
  

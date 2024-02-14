@@ -1,7 +1,7 @@
-const Main = () => {
+const Main = ({activeSection}) => {
     return (  
     <>
-        <div id="main">
+        <div id="main" className={activeSection === "main" ? "text-primaryColor" : "text-secondaryColor"}>
             <img src="/images/Ellipse 1.png" class="absolute h-full top-24 left-0"/>
             <img src="/images/Ellipse 1.png" class="absolute h-full top-0 rotate-180 right-0"/>
             <section class="mb-12">

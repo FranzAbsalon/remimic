@@ -77,6 +77,10 @@ button:hover{
   box-shadow: 0px 8px 10px 1px rgba(146, 146, 146, 0.2);
 }
 
+.active-section{
+  color: #fa0535;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

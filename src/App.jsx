@@ -1,15 +1,19 @@
 import './App.css'
-import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 import Main from './components/Main'
 import About from './components/About'
 import Pricing from './components/Pricing'
 import FAQs from './components/FAQs'
 import Footer from './components/Footer'
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 import { Link, animateScroll as scroll } from 'react-scroll'
+import { useState } from 'react'
 
 function App() {
   const lenis = useLenis(({ scroll }) => {})
-
+  
+  // useState Hook for Active Section
+  const [activeSection, setActiveSection] = useState("main")
+  
   return (
     <>
       <ReactLenis root>
@@ -25,7 +29,10 @@ function App() {
                             smooth={true} 
                             offset={0} 
                             duration={500}
-                            class="block py-2 px-3 cursor-pointer text-primaryColor font-semibold md:bg-transparent md:p-0" aria-current="page"
+                            className={`block py-2 px-3 cursor-pointer font-semibold 
+                              ${activeSection === "main" ? "text-primaryColor" : "text-secondaryColor"} 
+                              md:hover:bg-transparent md:hover:text-primaryColor md:p-0`}
+                            onSetActive={() => setActiveSection("main")}
                             >Home
                           </Link>
                         </li>
@@ -34,9 +41,12 @@ function App() {
                             to="about" 
                             spy={true} 
                             smooth={true} 
-                            offset={0} 
+                            offset={-100} 
                             duration={500}
-                            class="block py-2 px-3 cursor-pointer text-secondaryColor font-semibold md:hover:bg-transparent md:hover:text-primaryColor md:p-0"
+                            className={`block py-2 px-3 cursor-pointer font-semibold
+                              ${activeSection === "about" ? "text-primaryColor" : "text-secondaryColor"}
+                              md:hover:bg-transparent md:hover:text-primaryColor md:p-0`}
+                            onSetActive={() => setActiveSection("about")}
                             >About
                           </Link>
                         </li>
@@ -45,9 +55,12 @@ function App() {
                             to="pricing" 
                             spy={true} 
                             smooth={true} 
-                            offset={0} 
+                            offset={-100} 
                             duration={500}
-                            class="block py-2 px-3 cursor-pointer text-secondaryColor font-semibold md:hover:bg-transparent md:hover:text-primaryColor md:p-0"
+                            className={`block py-2 px-3 cursor-pointer font-semibold 
+                              ${activeSection === "pricing" ? "text-primaryColor" : "text-secondaryColor"} 
+                              md:hover:bg-transparent md:hover:text-primaryColor md:p-0`}
+                              onSetActive={() => setActiveSection("pricing")}
                             >Pricing
                           </Link>
                         </li>
@@ -56,9 +69,12 @@ function App() {
                             to="faq" 
                             spy={true} 
                             smooth={true} 
-                            offset={0} 
+                            offset={-150} 
                             duration={500}
-                            class="block py-2 px-3 cursor-pointer  text-secondaryColor font-semibold md:hover:bg-transparent md:hover:text-primaryColor md:p-0"
+                            className={`block py-2 px-3 cursor-pointer font-semibold 
+                            ${activeSection === "faq" ? "text-primaryColor" : "text-secondaryColor"} 
+                            md:hover:bg-transparent md:hover:text-primaryColor md:p-0`}
+                            onSetActive={() => setActiveSection("faq")}
                             >FAQs
                           </Link>
                         </li>
@@ -88,10 +104,10 @@ function App() {
 
             </div>
         </nav>
-        <Main />
-        <About/>
-        <Pricing />
-        <FAQs />
+        <Main activeSection={activeSection}/>
+        <About activeSection={activeSection}/>
+        <Pricing activeSection={activeSection}/>
+        <FAQs activeSection={activeSection}/>
         <Footer />
       </ReactLenis>
     </>
